@@ -1,0 +1,21 @@
+{
+	"name": "@bookings/schema",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "AGPL-3.0-or-later",
+	"dependencies": {
+		"graphile-migrate": "^1.4.1",
+		"kysely": "^0.27.4"
+	},
+	"devDependencies": {
+		"kanel": "^3.9.0",
+		"kanel-kysely": "^0.5.0",
+		"typescript": "^5.5.3"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "bookings-monorepo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"private": true,
+	"scripts": {
+		"check": "biome check .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"workspaces": ["packages/schema", "services/backend", "services/frontend"],
+	"author": "",
+	"license": "AGPL-3.0-or-later",
+	"dependencies": {
+		"typescript": "^5.5.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3"
+	}
+}

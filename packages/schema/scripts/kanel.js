@@ -21,13 +21,25 @@ const config = {
 	// `DATABASE_URL` here as it is overwritten by graphile-migrate.
 	connection: process.env.GM_DBURL,
 	outputPath,
-	schemas: ["auth"],
+	schemas: ["auth", "bookings"],
 	resolveViews: true,
 	preDeleteOutputFolder: true,
 	enumStyle: "type",
 	preRenderHooks: [kanelKysely.makeKyselyHook()],
 	postRenderHooks: [convertESMPaths],
 	customTypeMap: {
+		"public.citext": {
+			name: "Citext",
+			typeImports: [
+				{
+					name: "Citext",
+					isDefault: false,
+					isAbsolute: false,
+					importAsType: true,
+					path: "./src/types",
+				},
+			],
+		},
 		"public.email": {
 			name: "Email",
 			typeImports: [

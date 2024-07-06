@@ -1,0 +1,2 @@
+# For composing new migrations
+migrations/current.sql

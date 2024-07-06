@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+if [ "$IN_TESTS" = "1" ]; then
+	echo "Skipping dump-db in tests"
+	exit 0
+fi
+
+if [ "$GM_DBURL" = "" ]; then
+	echo "This script should only be ran from inside graphile-migrate"
+	exit 1
+fi
+
+${PG_DUMP:-pg_dump} \
+	--no-sync \
+	--schema-only \
+	--no-owner \
+	--exclude-schema=graphile_migrate \
+	--exclude-schema=graphile_worker \
+	--file=./data/schema.sql \
+	"$GM_DBURL"

@@ -1,8 +1,10 @@
+import type { z } from 'zod';
+import type { hostId } from '../../types.js';
 import type { UserId } from '../auth/User.js';
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely';
 
-/** Identifier type for bookings.host */
-export type HostId = number & { __brand: 'HostId' };
+/** Identifier type for host */
+export type HostId = z.infer<typeof hostId>;
 
 /** Represents the table bookings.host */
 export default interface HostTable {

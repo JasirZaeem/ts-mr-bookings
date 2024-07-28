@@ -1,8 +1,9 @@
-import type { Citext, Email } from '../../types.js';
+import type { z } from 'zod';
+import type { userId, Citext, Email } from '../../types.js';
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely';
 
-/** Identifier type for auth.user */
-export type UserId = number & { __brand: 'UserId' };
+/** Identifier type for user */
+export type UserId = z.infer<typeof userId>;
 
 /** Represents the table auth.user */
 export default interface UserTable {

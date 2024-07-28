@@ -1,9 +1,10 @@
+import type { z } from 'zod';
+import type { eventId, Citext } from '../../types.js';
 import type { HostId } from './Host.js';
-import type { Citext } from '../../types.js';
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely';
 
-/** Identifier type for bookings.event */
-export type EventId = number & { __brand: 'EventId' };
+/** Identifier type for event */
+export type EventId = z.infer<typeof eventId>;
 
 /** Represents the table bookings.event */
 export default interface EventTable {

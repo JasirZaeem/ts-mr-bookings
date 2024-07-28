@@ -7,12 +7,21 @@ const outputPath = "./src/models";
 export function convertESMPaths(_path, lines, _instantiatedConfig) {
 	return lines.map((line) =>
 		line.replace(/^import\stype\s.*'(.*)';$/, (match, p1) => {
-			return /\sfrom\s'kysely';$/.test(match)
-				? match
-				: // Add explicit file extension to relative import paths.
-					match.replace(p1, `${p1}.js`);
+			if (p1 === "kysely" || p1 === "zod") return match;
+			return match.replace(p1, `${p1}.js`);
 		}),
 	);
+}
+
+function snakeToPascalCase(snakeCase) {
+	return snakeCase
+		.split("_")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join("");
+}
+
+function snakeToCamelCase(snakeCase) {
+	return snakeCase.replace(/(_\w)/g, (match) => match[1].toUpperCase());
 }
 
 /** @type {import("kanel").Config} */
@@ -27,6 +36,36 @@ const config = {
 	enumStyle: "type",
 	preRenderHooks: [kanelKysely.makeKyselyHook()],
 	postRenderHooks: [convertESMPaths],
+	generateIdentifierType: (column, details) => {
+		const name =
+			snakeToPascalCase(details.name) + snakeToPascalCase(column.name);
+		const validatorName =
+			snakeToCamelCase(details.name) + snakeToPascalCase(column.name);
+
+		return {
+			declarationType: "typeDeclaration",
+			name,
+			exportAs: "named",
+			typeDefinition: [`z.infer<typeof ${validatorName}>`],
+			comment: [`Identifier type for ${details.name}`],
+			typeImports: [
+				{
+					name: "z",
+					isDefault: false,
+					isAbsolute: true,
+					importAsType: true,
+					path: "zod",
+				},
+				{
+					name: validatorName,
+					isDefault: false,
+					isAbsolute: false,
+					importAsType: true,
+					path: "./src/types",
+				},
+			],
+		};
+	},
 	customTypeMap: {
 		"public.citext": {
 			name: "Citext",

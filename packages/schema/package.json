@@ -2,7 +2,13 @@
 	"name": "@bookings/schema",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"module": "./src/index.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +17,8 @@
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
 		"graphile-migrate": "^1.4.1",
-		"kysely": "^0.27.4"
+		"kysely": "^0.27.4",
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"kanel": "^3.9.0",

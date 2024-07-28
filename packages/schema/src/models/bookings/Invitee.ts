@@ -1,9 +1,10 @@
+import type { z } from 'zod';
+import type { inviteeId, Email } from '../../types.js';
 import type { EventId } from './Event.js';
-import type { Email } from '../../types.js';
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely';
 
-/** Identifier type for bookings.invitee */
-export type InviteeId = number & { __brand: 'InviteeId' };
+/** Identifier type for invitee */
+export type InviteeId = z.infer<typeof inviteeId>;
 
 /** Represents the table bookings.invitee */
 export default interface InviteeTable {

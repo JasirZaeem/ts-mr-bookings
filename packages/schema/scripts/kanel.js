@@ -1,5 +1,5 @@
-import kanelKysely from "kanel-kysely";
 import kanel from "kanel";
+import kanelKysely from "kanel-kysely";
 
 const outputPath = "./src/models";
 

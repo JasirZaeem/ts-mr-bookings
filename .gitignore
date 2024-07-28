@@ -174,5 +174,5 @@ Temporary Items
 # Project Specific
 
 # Ignore all scratchpad folders in the project
-scratchpad/
+**/scratchpad/
 

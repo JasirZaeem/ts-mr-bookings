@@ -1,13 +1,14 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
+		"verbatimModuleSyntax": false,
 		"lib": ["ESNext"],
 		"outDir": "./dist",
 		"declaration": true,
-		"rootDir": "./src",
-		"emitDeclarationOnly": true
+		"declarationMap": true,
+		"rootDir": "./src"
 	},
 	"include": ["src"]
 }

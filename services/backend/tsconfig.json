@@ -1,8 +1,11 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
+		// Can use this to use .ts imports, but then have to compile with swc etc.
+		// "noEmit": true,
+		// "allowImportingTsExtensions": true,
 		"lib": ["ESNext"],
 		"outDir": "./dist",
 		"rootDir": "./src"

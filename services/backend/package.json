@@ -2,8 +2,12 @@
 	"name": "@bookings/backend",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
 	"type": "module",
+	"exports": {
+		"./appRouter": {
+			"types": "./src/trpc/appRouter.ts"
+		}
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -11,10 +15,16 @@
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
 		"@koa/router": "^12.0.1",
+		"@trpc/server": "^11.0.0-rc.467",
 		"koa": "^2.15.3",
 		"koa-bodyparser": "^4.4.1",
 		"koa-helmet": "^7.0.2",
-		"koa-logger": "^3.2.1"
+		"koa-logger": "^3.2.1",
+		"kysely": "^0.27.4",
+		"pg": "^8.12.0",
+		"superjson": "^2.2.1",
+		"trpc-koa-adapter": "^1.2.2",
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@types/koa": "^2.15.0",

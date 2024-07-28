@@ -2,10 +2,15 @@
 	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
 	"files": {
 		"ignoreUnknown": true,
-		"ignore": ["**/tsconfig*", ".gmrc"]
+		"ignore": ["**/tsconfig*", ".gmrc", "./packages/schema/src/models/*"]
 	},
 	"organizeImports": {
 		"enabled": true
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
 	},
 	"linter": {
 		"enabled": true,
@@ -18,6 +23,9 @@
 				"noUnusedVariables": {
 					"level": "error"
 				}
+			},
+			"nursery": {
+				"useSortedClasses": "error"
 			}
 		}
 	}

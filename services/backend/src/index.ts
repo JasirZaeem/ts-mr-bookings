@@ -2,6 +2,8 @@ import Router from "@koa/router";
 import Koa from "koa";
 import KoaLogger from "koa-logger";
 import { createKoaMiddleware } from "trpc-koa-adapter";
+import { databaseConnectionString } from "./config.js";
+import { getServiceDatabase } from "./db.js";
 import { appRouter } from "./trpc/appRouter.js";
 import { createInnerContext } from "./trpc/trpc.js";
 
@@ -18,7 +20,8 @@ app.use(router.allowedMethods());
 
 const adapter = createKoaMiddleware({
 	router: appRouter,
-	createContext: createInnerContext,
+	createContext: () =>
+		createInnerContext(getServiceDatabase(databaseConnectionString)),
 	prefix: "/trpc",
 });
 

@@ -5,6 +5,7 @@ export type * from "./models/bookings/Event.js";
 export type * from "./models/bookings/Host.js";
 export type * from "./models/bookings/Invitee.js";
 export type * from "./models/Database.js";
+export * from "./testHelpers.js";
 
 import type { default as GeneratedDatabase } from "./models/Database.js";
 import type UserTable from "./models/auth/User.js";

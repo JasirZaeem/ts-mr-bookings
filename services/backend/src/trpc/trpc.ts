@@ -1,8 +1,9 @@
+import type { Database } from "@bookings/schema";
 import { initTRPC } from "@trpc/server";
+import type { Kysely } from "kysely";
 import SuperJSON from "superjson";
-import { db } from "../db.js";
 
-export function createInnerContext() {
+export function createInnerContext(db: Kysely<Database>) {
 	return {
 		db,
 	};
@@ -18,3 +19,4 @@ export const router = t.router;
 export const mergeRouters = t.mergeRouters;
 export const publicProcedure = t.procedure;
 export const middleware = t.middleware;
+export const createCallerFactory = t.createCallerFactory;

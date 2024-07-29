@@ -1,5 +1,5 @@
 --! Previous: -
---! Hash: sha1:f427eafc0cb9e13ef25f40ea5d3eea2f20bca5cb
+--! Hash: sha1:e96a0372766ac61a678bbb410862bfcd3c801cec
 
 -- Initial migration
 
@@ -145,7 +145,7 @@ CREATE TABLE bookings.booking
 	EXCLUDE USING gist (host_id WITH =, duration WITH &&)
 );
 
-COMMENT ON COLUMN booking.duration IS 'The time range for the booking, mutually exclusive for the host.';
+COMMENT ON COLUMN bookings.booking.duration IS 'The time range for the booking, mutually exclusive for the host.';
 
 CREATE INDEX booking_host_id_idx ON bookings.booking (host_id);
 COMMENT ON INDEX bookings.booking_host_id_idx IS 'Index for the host_id column to search for bookings by host.';

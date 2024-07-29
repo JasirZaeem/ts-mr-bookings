@@ -1,7 +1,7 @@
 import { citext } from "@bookings/schema";
 import { z } from "zod";
 import { getEventsByUsername } from "../services/event.js";
-import { publicProcedure, router } from "./trpc.js";
+import { createCallerFactory, publicProcedure, router } from "./trpc.js";
 
 export const appRouter = router({
 	ping: publicProcedure.output(String).query(() => "pong"),
@@ -15,5 +15,7 @@ export const appRouter = router({
 			return await getEventsByUsername(ctx, input.username);
 		}),
 });
+
+export const createAppRouterCaller = createCallerFactory(appRouter);
 
 export type AppRouter = typeof appRouter;
